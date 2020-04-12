@@ -2,6 +2,10 @@ function cons(x){
     console.log(x);
 }
 
+// || (ИЛИ)
+// && (И)
+// ! (НЕ)
+
 // https://eloquent-javascript.karmazzin.ru/chapter2#treugolnik-v-cikle
 function triangle() {
     var s = "12345678";
@@ -11,7 +15,7 @@ function triangle() {
         ls = ls + 1;
     }
 }
-triangle();
+// triangle();
 
 // https://eloquent-javascript.karmazzin.ru/chapter2#fizzbuzz
 function FizzBuzz(x) {
@@ -31,7 +35,7 @@ function FizzBuzz(x) {
         one++;
     } 
 }
-FizzBuzz(17);
+// FizzBuzz(17);
 
 // https://eloquent-javascript.karmazzin.ru/chapter2#shakhmatnaya-doska
 function chessBoard(x, lat, spac) {
@@ -64,4 +68,35 @@ function chessBoard(x, lat, spac) {
 
     cons(final_result.repeat(x/2));
 }
-chessBoard(8, "#", " ");
+// chessBoard(8, "#", " ");
+
+// Замыкание
+// function mul() {
+//     var n = 0;
+//     return function() {
+//         return n++;
+//     };
+// }
+// var k = mul();
+// cons(k());
+// cons(k());
+
+function isEven(p) {
+    if (p%2 == 0) return true;
+    else if (p%2 == 1) return false;
+}
+
+
+// function isEven(n) {
+// 	if (n == 0) return true;
+// 	else if (Math.abs(n) == 1) return false;
+// 	else return isEven(Math.abs(n - 2));
+// }
+cons(isEven(1));
+cons(isEven(-1));
+cons(isEven(0));
+cons(isEven(50));
+cons(isEven(20));
+cons(isEven(122));
+cons(isEven(80));
+cons(isEven(75));
