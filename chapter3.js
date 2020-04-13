@@ -2,22 +2,32 @@ function cons(x){
     console.log(x);
 }
 
-function isEven(p) {
-    if (p%2 == 0) return true;
-    else if (p%2 == 1) return false;
+// https://eloquent-javascript.karmazzin.ru/chapter3#minimum
+function min(x, y) {
+    if (x>y) return y;
+    else if (x<y) return x;
 }
+// cons(min(0,10));
+
+// https://eloquent-javascript.karmazzin.ru/chapter3#rekursiya-1
+function isEven(p) {
+    if (p == 0) return true;
+    else if (p == 1) return false;
+    else return isEven(p - 1);
+}
+// cons(isEven(1));
+// // cons(isEven(-1));
+// cons(isEven(0));
+// cons(isEven(50));
+// cons(isEven(75));
 
 
-// function isEven(n) {
-// 	if (n == 0) return true;
-// 	else if (Math.abs(n) == 1) return false;
-// 	else return isEven(Math.abs(n - 2));
-// }
-cons(isEven(1));
-cons(isEven(-1));
-cons(isEven(0));
-cons(isEven(50));
-cons(isEven(20));
-cons(isEven(122));
-cons(isEven(80));
-cons(isEven(75));
+// https://eloquent-javascript.karmazzin.ru/chapter3#schitaem-boby
+function  countChar(s, l) {
+    var count = 0;
+    for (var i = 0; i < s.length; i++) {
+        if (s.charAt(i).toLowerCase() == l.toLowerCase()) count++;
+    }
+    return count;
+}
+cons(countChar('Takitak', 't'));
