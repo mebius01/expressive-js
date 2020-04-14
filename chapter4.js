@@ -6,16 +6,6 @@ function cons(x){
 // shift Удаляет из массива первый элемент и возвращает его:
 // unshift Добавляет элемент в начало массива:
 
-// var ar = [1,2,3,4,5,6,7,8,9,0];
-// for (let i in ar) {
-//   console.log(i+2);
-// };
-// for (let i of ar) {
-//   console.log(i+2);
-// }
-// for (let i = 0; i < ar.length; i++) {
-//   console.log(ar[i]+2);
-// }
 
 // https://eloquent-javascript.karmazzin.ru/chapter4#summa-diapazona
 function range(x, y, z=1) {
@@ -33,57 +23,39 @@ function sum(l) {
 }
 // console.log(sum(range(1, 10)));
 
+
+
 // https://eloquent-javascript.karmazzin.ru/chapter4#obrashaem-vspyat-massiv
 function  reverseArray(list) {
   // отдает новый массив реверс
-  var arrayRev = []
-  for (let i = 0; i < list.length; i++) {
+  var arrayRev = [];
+  for (var i = 0; i < list.length; i++) {
     arrayRev.unshift((list[i]));
   }
-  return arrayRev
+  return arrayRev;
 }
 
-function reverseArrayInPlace(list) {
-  let l = list.length-1
-  let d = []
-  while (l >= 0) {
-    list.unshift(12+l);
-    // delete list[l];
-    // cons(list[l]);
-    l--
+function reverseArrayInPlace(arr) {
+  // эта штука съела мне мозг пока на листке бумаги не разобрал. не уверен, что решение правильное
+  var byTwo = Math.floor(arr.length/2);
+  var arrLen = arr.length-1;
+  var a; var b;
+
+  for (var i = 0; i <  byTwo; i++) {
+
+    a = arr[i];
+    b = arr[arrLen];
+    arr[i] = b;
+    arr[arrLen] = a;
+    arrLen--;
   }
-  // list.unshift(list.pop())
-  // list.unshift(list.pop())
-  // list.unshift(list.pop())
-  // list.unshift(list.pop())
-  // list.unshift(list.pop())
-
-  // while (l >= 0) {
-    // d.push(list.pop());
-    // l--;
-  // }
-  // cons(d);
-  // list = d;
-  // cons(list);
-  return list;
-  // return list.concat(d);
+  return arr;
 }
-
-// function reverseArrayInPlace(arr) {
-// 	var i = Math.floor(arr.length / 2);
-
-// 	for (var j = 0; j < i; ++j) {
-// 		var tmp = arr[arr.length - j - 1];
-// 		arr[arr.length - j - 1] = arr[j];
-// 		arr[j] = tmp;
-// 	}
-
-// 	return arr;
-// }
-
-var testVar = ["1","2","3","4","5"]
+// var testVar = [1,2,3,4,5];
 // cons(testVar);
-reverseArrayInPlace(testVar);
-cons(testVar);
+// reverseArrayInPlace(testVar);
+// cons(testVar);
 
-// cons(reverseArray(["1","2","3"]));
+// https://eloquent-javascript.karmazzin.ru/chapter4#spisok
+var list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null}}};
+cons(Object.keys({"q":1,"w":2}));
