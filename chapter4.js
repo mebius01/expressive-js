@@ -46,8 +46,11 @@ function  reverseArray(list) {
 function reverseArrayInPlace(list) {
   let l = list.length-1
   let d = []
-  for (let i = 0; i < list.length; i++) {
-    cons(list[i]);
+  while (l >= 0) {
+    list.unshift(12+l);
+    // delete list[l];
+    // cons(list[l]);
+    l--
   }
   // list.unshift(list.pop())
   // list.unshift(list.pop())
