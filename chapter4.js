@@ -36,7 +36,7 @@ function  reverseArray(list) {
 }
 
 function reverseArrayInPlace(arr) {
-  // эта штука съела мне мозг пока на листке бумаги не разобрал. не уверен, что решение правильное
+  // эта штука съела мне мозг пока на листке бумаги не разобрал.
   var byTwo = Math.floor(arr.length/2);
   var arrLen = arr.length-1;
   var a; var b;
@@ -51,11 +51,12 @@ function reverseArrayInPlace(arr) {
   }
   return arr;
 }
-// var testVar = [1,2,3,4,5];
-// cons(testVar);
+
+// var testVar = range(1, 100000000)
+// const start= new Date().getTime();
 // reverseArrayInPlace(testVar);
-// cons(testVar);
+// const end = new Date().getTime();
+// console.log(end - start);
+
 
 // https://eloquent-javascript.karmazzin.ru/chapter4#spisok
-var list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null}}};
-cons(Object.keys({"q":1,"w":2}));
