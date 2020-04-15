@@ -60,3 +60,23 @@ function reverseArrayInPlace(arr) {
 
 
 // https://eloquent-javascript.karmazzin.ru/chapter4#spisok
+
+var list = {value: 1, rest: {value: 2, rest: { value: 3, rest: null}}};
+
+function arrayToList(arr) {
+  obj = {};
+  z = 0;
+  for (var i = 0; i < arr.length; i++) {
+    obj['value']=i;
+    obj['rest']={'value':i};
+    cons(obj);
+    
+  }
+  // while (arr.length > z) {
+  //   obj['value'] = z;
+  //   z++;
+  //   cons(obj);
+  // }
+}
+
+cons(arrayToList([1,2,3,4]));
