@@ -67,8 +67,8 @@ function arrayToList(arr) {
   obj = {};
   z = 0;
   for (var i = 0; i < arr.length; i++) {
-    obj['value']=i;
-    obj['rest']={'value':i};
+    obj['value']=arr[i];
+    obj['rest']={'value':arr[i]};
     cons(obj);
     
   }
