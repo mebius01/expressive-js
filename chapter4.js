@@ -61,22 +61,52 @@ function reverseArrayInPlace(arr) {
 
 // https://eloquent-javascript.karmazzin.ru/chapter4#spisok
 
-var list = {value: 1, rest: {value: 2, rest: { value: 3, rest: null}}};
+var list = {value: 1, rest: 
+            {value: 2, rest:
+              { value: 3, rest: null}
+            }
+          };
 
 function arrayToList(arr) {
   obj = {};
-  z = 0;
-  for (var i = 0; i < arr.length; i++) {
-    obj['value']=arr[i];
-    obj['rest']={'value':arr[i]};
-    cons(obj);
-    
-  }
-  // while (arr.length > z) {
-  //   obj['value'] = z;
-  //   z++;
+  // if (arr.length > 1)
+  //  return obj={ value: arr.shift(), rest: arrayToList(arr)};
+  // else if (arr.length == 2)
+  //   return obj = {value: arr.shift(), rest: {value: arr.shift(), rest: null}};
+  // else return arrayToList(arr);
+
+
+  // for (let i = 0; i < arr.length+1; i++) {
+  //   obj[i] = (arr);
+  //   cons(arr[i]);
   //   cons(obj);
   // }
+  // z = 0
+  // while (arr.length != 0 ) {
+  //   obj = {value: 1, rest:arr.shift()};
+  //   cons(arr);
+  //   cons(obj);
+  // }
+
+  if (arr.length+1 != 0) {
+    return obj = {value: arr.shift(),  rest: {value: arr.shift(), rest: null}};
+  } else { return arrayToList(arr);}
+
+  // for (var i = 0; i < arr.length; i++) {
+//     // a(i)
+//     obj['value']=arr[i];
+//     obj['rest']= a(i);
+//     cons(obj);
+//   }
+//   // obj['value']=arr[i];
+//   //   obj['rest']={'value':i};
+//   // while (arr.length > z) {
+//   //   obj['value'] = z;
+//   //   z++;
+//   //   cons(obj);
+//   // }
 }
 
-cons(arrayToList([1,2,3,4]));
+cons(arrayToList([1,2,3]));
+
+// cons([1,2,3].length);
