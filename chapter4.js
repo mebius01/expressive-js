@@ -96,31 +96,72 @@ function prepend(list, el) {
   return {value: el, rest: list};
 }
 
-function nth(list, n) {
-  // в качестве аргументов принимает список и число,
-  // а возвращает элемент на заданной позиции в списке
-  // или же undefined в случае отсутствия такого элемента.
+function search(list, n) {
   var value = list.value;
   var rest = list.rest;
   if (value == n) {
-    return {"pos":0, "val": value}
+    return {"pos":0, "val": value};
   }
   var c = 1;
   while (rest != null) {
     rest = rest["rest"];
-    value = rest["value"];
-    c++
-    if (value == n) {
-      return {"pos":c, "val": value}
+    c++;
+    if (rest != null) {
+      if (rest.value == n) {
+        return {"pos":c, "val": rest.value};
+      }
     }
   }
 }
 
+function nth(list, n) {
+  // в качестве аргументов принимает список и число,
+  // а возвращает элемент на заданной позиции в списке
+  // или же undefined в случае отсутствия такого элемента.
+  var c = 0;
+  var rest = list.rest;
+  var value;
+  if (n == 0) {
+    return list.value;
+  } else {
+      while (c < n) {
+        rest = rest["rest"];
+        c++;
+        if (rest == null) {
+          return undefined;
+        } else {
+          value = rest.value;
+        }
+      }
+      return value;
+    }
+}
 
-var l=[1,2,3,4,5,6,7,8,9];
-// listToArray(nth(list, n))
+function deepEqual(x, y) {
+  // cons(typeof x)
+  // cons(typeof y)
+  // cons(typeof x === typeof y)
+  // let obj = [1,2,3,4];
+  // let n = 2;
+  // for (let i in obj) {
+  //   cons(obj[i] === n)
+  // }
+  if (typeof x == typeof y && x != null && y !== null) {
+    if (typeof x == 'string' || typeof x == 'number') {
+      return x === y;
+    } if (Array.isArray(x) && Array.isArray(y)) {
+        for (let i in x && y) {
+          cons(x[i] == y[i])
+        }
+    }
+  }
+}
+cons(deepEqual([1,2,3],[1,5,6]))
+// cons(deepEqual({v1:1,v2:2,v3:3},[1,5,6]))
+// var l=[1,2,3,4,5,6,7,8,9];
+// cons(nth(arrayToList(l), 2));
+// cons(search(arrayToList(l), 1));
+// listToArray(search(list, 3))
 // cons(prepend(l, 12));
 // cons(arrayToList(l));
 // cons([1,2,3].length);
-
-cons(nth(arrayToList(l), 3))
