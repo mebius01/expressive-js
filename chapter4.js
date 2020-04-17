@@ -9,7 +9,7 @@ function cons(x){
 
 // https://eloquent-javascript.karmazzin.ru/chapter4#summa-diapazona
 function range(x, y, z=1) {
-    var list = [];
+var list = [];
     if (x<y) {while (x<y+1) {list.push(x); x=x+z;}}
     else if (x>y) {while (1+x>y) {list.push(y); y=y+z;}}
     return list;
@@ -61,52 +61,66 @@ function reverseArrayInPlace(arr) {
 
 // https://eloquent-javascript.karmazzin.ru/chapter4#spisok
 
-var list = {value: 1, rest: 
-            {value: 2, rest:
-              { value: 3, rest: null}
-            }
-          };
+var list = {value: 1,rest:
+            {value: 2,rest:
+              {value: 3,rest: null}
+              }
+            };
 
 function arrayToList(arr) {
-  obj = {};
-  // if (arr.length > 1)
-  //  return obj={ value: arr.shift(), rest: arrayToList(arr)};
-  // else if (arr.length == 2)
-  //   return obj = {value: arr.shift(), rest: {value: arr.shift(), rest: null}};
-  // else return arrayToList(arr);
-
-
-  // for (let i = 0; i < arr.length+1; i++) {
-  //   obj[i] = (arr);
-  //   cons(arr[i]);
-  //   cons(obj);
-  // }
-  // z = 0
-  // while (arr.length != 0 ) {
-  //   obj = {value: 1, rest:arr.shift()};
-  //   cons(arr);
-  //   cons(obj);
-  // }
-
-  if (arr.length+1 != 0) {
-    return obj = {value: arr.shift(),  rest: {value: arr.shift(), rest: null}};
-  } else { return arrayToList(arr);}
-
-  // for (var i = 0; i < arr.length; i++) {
-//     // a(i)
-//     obj['value']=arr[i];
-//     obj['rest']= a(i);
-//     cons(obj);
-//   }
-//   // obj['value']=arr[i];
-//   //   obj['rest']={'value':i};
-//   // while (arr.length > z) {
-//   //   obj['value'] = z;
-//   //   z++;
-//   //   cons(obj);
-//   // }
+  // создаёт список из массива
+  for (let i = 0; i < arr.length; i++) {
+    var nextObj = obj || null;
+    var obj = {};
+    obj['value'] = arr[i];
+    obj['rest'] = nextObj;
+    // cons(obj);
+  }
+  return obj;
 }
 
-cons(arrayToList([1,2,3]));
+function listToArray(list) {
+  // создаёт массив из списка
+  var arr =[];
+  arr.push(list.value)
+  var rest = list.rest
+  while (rest != null) {
+    arr.push(rest.value)
+    rest = rest["rest"];
+  }
+  return arr;
+}
 
+function prepend(list, el) {
+  // получает элемент и создаёт новый список, где этот элемент добавлен спереди к первоначальному списку
+  return {value: el, rest: list};
+}
+
+function nth(list, n) {
+  // в качестве аргументов принимает список и число,
+  // а возвращает элемент на заданной позиции в списке
+  // или же undefined в случае отсутствия такого элемента.
+  var value = list.value;
+  var rest = list.rest;
+  if (value == n) {
+    return {"pos":0, "val": value}
+  }
+  var c = 1;
+  while (rest != null) {
+    rest = rest["rest"];
+    value = rest["value"];
+    c++
+    if (value == n) {
+      return {"pos":c, "val": value}
+    }
+  }
+}
+
+
+var l=[1,2,3,4,5,6,7,8,9];
+// listToArray(nth(list, n))
+// cons(prepend(l, 12));
+// cons(arrayToList(l));
 // cons([1,2,3].length);
+
+cons(nth(arrayToList(l), 3))
