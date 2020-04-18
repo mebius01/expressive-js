@@ -74,7 +74,6 @@ function arrayToList(arr) {
     var obj = {};
     obj['value'] = arr[i];
     obj['rest'] = nextObj;
-    // cons(obj);
   }
   return obj;
 }
@@ -82,10 +81,10 @@ function arrayToList(arr) {
 function listToArray(list) {
   // создаёт массив из списка
   var arr =[];
-  arr.push(list.value)
-  var rest = list.rest
+  arr.push(list.value);
+  var rest = list.rest;
   while (rest != null) {
-    arr.push(rest.value)
+    arr.push(rest.value);
     rest = rest["rest"];
   }
   return arr;
@@ -138,26 +137,38 @@ function nth(list, n) {
 }
 
 function deepEqual(x, y) {
-  // cons(typeof x)
-  // cons(typeof y)
-  // cons(typeof x === typeof y)
-  // let obj = [1,2,3,4];
-  // let n = 2;
-  // for (let i in obj) {
-  //   cons(obj[i] === n)
-  // }
-  if (typeof x == typeof y && x != null && y !== null) {
-    if (typeof x == 'string' || typeof x == 'number') {
-      return x === y;
-    } if (Array.isArray(x) && Array.isArray(y)) {
-        for (let i in x && y) {
-          cons(x[i] == y[i])
+  
+  // принимает два значения и возвращает true,
+  // только если это два одинаковых значения или это объекты,
+  // свойства которых имеют одинаковые значения,
+  // если их сравнивать рекурсивным вызовом deepEqual.
+
+  let r;
+  if ((x != null && y != null) && (typeof x == 'object' && typeof y == 'object')) {
+      if (Object.values(x).length != Object.values(y).length) {
+        return false;
+      }
+      else {
+        for (let i = 0, j = 0; i < Object.values(x).length, j < Object.values(y).length; i++, j++) {
+          r = deepEqual(Object.values(x)[i], Object.values(y)[j]);
+          if (r == false) {break;}
         }
-    }
+      }
+      return r;
   }
+  else {return x === y;}
 }
-cons(deepEqual([1,2,3],[1,5,6]))
-// cons(deepEqual({v1:1,v2:2,v3:3},[1,5,6]))
+
+// var obj = {here: {is: "an"}, object: 2};
+// console.log(deepEqual(obj, obj));
+// // → true
+// console.log(deepEqual(obj, {here: 1, object: 2}));
+// // → false
+// console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// // → true
+// cons(deepEqual({v1:1,v2:2,v3:3},{v1:1,v2:2,v3:3}));
+// cons(deepEqual([1,2,3],[1,2,3,4]));
+// cons(deepEqual(1,'1'));
 // var l=[1,2,3,4,5,6,7,8,9];
 // cons(nth(arrayToList(l), 2));
 // cons(search(arrayToList(l), 1));
@@ -165,3 +176,40 @@ cons(deepEqual([1,2,3],[1,5,6]))
 // cons(prepend(l, 12));
 // cons(arrayToList(l));
 // cons([1,2,3].length);
+
+
+
+
+
+// function isa(xx, yy) {
+//     for (let i in xx && yy) {
+//       return xx[i] == yy[i];
+//     }
+//   }
+
+//   if (typeof x == typeof y && x != null && y !== null) {
+//     if (typeof x == 'string' || typeof x == 'number') {
+//       return x === y;
+//     } else {
+//       if (typeof x == 'object') {
+//         if (Array.isArray(x) && Array.isArray(y)) {
+//           return isa(x, y);
+//         } else {
+//             let a=[]; let b=[];
+//             for (let i in x) {
+//               a.push(x[i]);
+//             }
+//             for (let ii in y) {
+//               b.push(y[ii]);
+//             }
+//             return isa(a,b);
+//             // let z = 0;
+//             // while (z < Object.keys(x).length) {
+//             //   cons(x.value);
+//             //   z++;
+//             // }
+//           }
+//         }
+//       }
+//     }
+//   }
