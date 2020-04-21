@@ -5,24 +5,25 @@
  */
 // Преобразования типов
 let value = 10;
-// value = (40).toString();
-// value = '20';
-// value = Number('20');
-// value = parseFloat('20.20px');
-// value = parseInt('20.20px');
-// value = String(10);
-// value = Boolean('false');
-// value = Array('12');
-// value = Object('10');
-// // console.log(typeof value, value);
+value = (40).toString();
+value = '20';
+value = Number('20');
+value = parseFloat('20.20px');
+value = parseInt('20.20px');
+value = String(10);
+value = Boolean('false');
+value = Array('12');
+value = Object('10');
+console.log(typeof value, value);
 
-// // Шаблонные строки
-// let name = 'Den';
-// let age = 23;
-// let templateString = `Test template string
-// Name = ${name},
-// Age = ${age}`;
-// console.log(templateString);
+// Шаблонные строки
+let name = 'Den';
+let age = 23;
+let templateString = `Test template string
+Name = ${name},
+Age = ${age}`;
+console.log(templateString);
+console.log('-------');
 
 // Операторы
 /**
@@ -30,31 +31,34 @@ let value = 10;
  * И - && Запинается на false. Если одно из условий false вернет false Если все true Вернет последнее true
  * Не !
  */
-// value = 0 || 2 || 3;
-// value = 3 && 2 && 1;
-// console.log(value);
+value = 0 || 2 || 3;
+value = 3 && 2 && 1;
+console.log(value);
+console.log('-------');
 
 // Тернарный оператор.
 // Условие ? ели True : ели folse;
-// let a = 3;
-// let b = 3;
-// a > b ? console.log(a > b) : console.log(b > a);
+let a = 3;
+let b = 3;
+a > b ? console.log(a > b) : console.log(b > a);
+console.log('-------');
 
-// // Switch case
-// let c = 10;
-// switch (c) {
-//     case 8:
-//         console.log(`${c} = 8`);
-//         break;
-//     case 9:
-//         console.log(`${c} = 9`);
-//         break;
-//     case 10:
-//         console.log(`${c} = 10`);
-//     default:
-//         console.log(`${c} != 8 && != 9 && != 10`);
-//         break;
-// }
+// Switch case
+let c = 10;
+switch (c) {
+    case 8:
+        console.log(`${c} = 8`);
+        break;
+    case 9:
+        console.log(`${c} = 9`);
+        break;
+    case 10:
+        console.log(`${c} = 10`);
+    default:
+        console.log(`${c} != 8 && != 9 && != 10`);
+        break;
+}
+console.log('-------');
 
 // while
 let z = 0;
@@ -131,7 +135,12 @@ const arrowFun4 = (a) => {
 };
 console.log(arrowFun4(14))
 arrowFun2();
-
-
-
 console.log('-------');
+
+// Методы массивов - https://learn.javascript.ru/array-methods
+
+// Массив: перебирающие методы - https://learn.javascript.ru/array-iteration
+
+// МЕТОДЫ ОБЪЕКТОВ В JAVASCRIPT - https://www.8host.com/blog/metody-obektov-v-javascript/
+
+
