@@ -218,3 +218,40 @@ console.log('-------');
 
 console.log(arr4.sort((a, b) => (b - a)));
 console.log('-------');
+
+/**
+ * Spred
+ * Оператор spred делит массив на элементы
+ */
+
+const sp = ['1', '2', '3', '4', '5'];
+const sp2 = [5, 6, 7, 8];
+console.log(...sp2, ...sp);
+
+const spObj = {
+    s: 1,
+    d: 2,
+    c: true
+}
+const spObj2 = {
+    z: 11,
+    dd: 22,
+    ac: false
+}
+console.log({
+    ...spObj
+})
+console.log({
+    ...spObj,
+    ...spObj2
+})
+
+/**
+ * Rest собирает в массив
+ */
+
+const sum = (...rest) => {
+    return rest.reduce((acc, index) => (acc + index), 0)
+};
+const arr5 = [1, 2, 3, 4, 5];
+console.log(sum(...arr5));
